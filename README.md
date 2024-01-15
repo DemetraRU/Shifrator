@@ -1,2 +1,2 @@
 # Shifrator
-program for decrupt and ecrypt messages 
+# program for decrupt and ecrypt messages 
