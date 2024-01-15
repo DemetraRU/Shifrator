@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8E94DB3F-9DE8-45B6-B7C5-98120658531A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MainPanel.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Shifr.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MainPanel">
+        <MSBuild Projects="MainPanel.cbproj"/>
+    </Target>
+    <Target Name="MainPanel:Clean">
+        <MSBuild Projects="MainPanel.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MainPanel:Make">
+        <MSBuild Projects="MainPanel.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Shifr">
+        <MSBuild Projects="Shifr.cbproj"/>
+    </Target>
+    <Target Name="Shifr:Clean">
+        <MSBuild Projects="Shifr.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Shifr:Make">
+        <MSBuild Projects="Shifr.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MainPanel;Shifr"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MainPanel:Clean;Shifr:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MainPanel:Make;Shifr:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
